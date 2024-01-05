@@ -97,7 +97,7 @@ record Zuma(long board, long hand) {
     }
 
     // Compute new board state by removing all consecutive balls recursively
-    public long computeBoard(long insBoard, long ball, int pos, int depth) {
+    private long computeBoard(long insBoard, long ball, int pos, int depth) {
         final long L = (insBoard >> (pos + 3)) & 0x7;
         final long R = (insBoard >> (pos - 3)) & 0x7;
 
