@@ -6,6 +6,7 @@ class ProblemRunner {
         runTest("RRGGBBYYWWRRGGBB", "RGBYW", -1);
         runTest("YYRRYYRYRYYRRYY", "RRRYR", 3);
         runTest("RRYGGYYRRYYGGYRR", "GGBBB", 5);
+        runTest("RBYYBBRRB", "YRBGB", 3);
     }
 
     /** Run an instance of test */

@@ -24,7 +24,6 @@ class Solution {
         
         visited.add(zuma.board());
         init.add(zuma);
-        
         return bfs(init, 0, visited);
     }
 
@@ -58,21 +57,10 @@ record Zuma(long board, long hand) {
         );
     }
 
-    // Board has cleared
-    private boolean done() {
-        return this.board == 0;
-    }
-
-    // Out of hand balls
-    private boolean fail() {
-        return this.hand == 0;
-    }
-
     // Finds and returns a list of immediate neighbors of this Zuma state
     public ArrayList<Zuma> getNextLevel(int depth, HashSet<Long> visited) {
         final ArrayList<Zuma> next = new ArrayList<>();
         final ArrayList<long[]> handList = this.buildHandList();
-
         final long[] boardList = new long[32];
         final int size = this.buildBoardList(boardList);
         
@@ -83,12 +71,12 @@ record Zuma(long board, long hand) {
                     continue;
 
                 final Zuma z = new Zuma(nextBoard, pair[1]);
-                if (z.done()) {
+                if (z.board == 0)
                     return null;
-                }
-                if (z.fail() || visited.contains(nextBoard)) {
+                
+                if (z.hand == 0 || visited.contains(nextBoard))
                     continue;
-                }
+                
                 visited.add(nextBoard);
                 next.add(z);
             }
@@ -116,12 +104,11 @@ record Zuma(long board, long hand) {
 
             // pop (if possible)
             if ((top > 0) && (curr != top) && 
-                (stack & 0x3F) == ((stack >> 3) & 0x3F)
-            ) {
+                (stack & 0x3F) == ((stack >> 3) & 0x3F))
+            {
                 stack >>= 9;
-                if ((stack & 0x7) == top) {
+                if ((stack & 0x7) == top)
                     stack >>= 3;
-                }
             }
             
             if (curr == 0)
@@ -136,8 +123,7 @@ record Zuma(long board, long hand) {
     private ArrayList<long[]> buildHandList() {
         final ArrayList<long[]> handList = new ArrayList<>();
         long prevBall = 0;
-        long lsbMask  = 0;
-        long msbMask  = ~0x7;
+        long ballMask = 0;
         
         for (int i = 0; i < 16; i += 3) {
             final long currBall = (this.hand >> i) & 0x7;
@@ -146,15 +132,13 @@ record Zuma(long board, long hand) {
 
             if (currBall != prevBall) {
                 prevBall = currBall;
-
-                handList.add(new long[]{
-                    currBall,
-                    ((this.hand & msbMask) >> 3) | (this.hand & lsbMask)
+                handList.add(new long[]{ 
+                    currBall, 
+                    ((this.hand >> 3) & ~ballMask) | (this.hand & ballMask)
                 });
             }
             // update masks
-            lsbMask = (lsbMask << 3) | 0x7;
-            msbMask <<= 3;
+            ballMask = (ballMask << 3) | 0x7;
         }
         return handList;
     }
@@ -174,7 +158,6 @@ record Zuma(long board, long hand) {
             
             ballMask <<= 3;
             insBoard = (insBoard | currBall) & ~ballMask;
-
             buffer[ptr++] = insBoard;
         }
         return ptr;
