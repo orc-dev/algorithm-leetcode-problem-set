@@ -16,6 +16,7 @@ import java.util.HashSet;
  *   - Memory (45.54 MB)
  */
 class Solution {
+    
     public int findMinStep(String board, String hand) {
         final Zuma zuma = Zuma.create(board, hand);
         final HashSet<Long> visited = new HashSet<>();
@@ -27,16 +28,16 @@ class Solution {
     }
 
     private int bfs(ArrayList<Zuma> curr, int k, HashSet<Long> visited) {
-        if (curr.isEmpty())
+        if (curr.isEmpty()) {
             return -1;
-        
+        }
         final ArrayList<Zuma> next = new ArrayList<>();
-        
+
         for (Zuma zuma : curr) {
             ArrayList<Zuma> neib = zuma.getNextLevel(k, visited);
-            if (neib == null) 
+            if (neib == null) {
                 return k + 1;
-            
+            }
             next.addAll(neib);
         }
         return bfs(next, k + 1, visited);
