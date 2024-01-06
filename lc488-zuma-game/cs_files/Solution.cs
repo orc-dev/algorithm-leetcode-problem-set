@@ -31,23 +31,25 @@ class Solution {
     }
 }
 
+// Organize board state and hand state
 record Zuma {
+
     public long Board { get; }
     public long Hand  { get; }
 
-    // constructor with string args
+    // Constructor with string args
     public Zuma(string boardStr, string handStr) {
         this.Board = Zuma.Encode(boardStr, false);
         this.Hand  = Zuma.Encode(handStr, true);
     }
 
-    // constructor with ulong args
+    // Constructor with ulong args
     public Zuma(long board, long hand) {
         this.Board = board;
         this.Hand  = hand;
     }
 
-    //
+    // Get states in next level
     public List<Zuma>? GetNextLevel(HashSet<long> visited, int depth) {
         List<Zuma> next = new();
         List<long> boardList = this.GetBoardList();
@@ -73,6 +75,7 @@ record Zuma {
         return next;
     }
 
+    // Compute the board state after insert 'ball' at 'pos' of current board
     private static long ComputerBoard(long insBoard, long ball, int pos, int depth) {
         long L = (insBoard >> (pos + 3)) & 0x7;
         long R = (insBoard >> (pos - 3)) & 0x7;
@@ -105,6 +108,7 @@ record Zuma {
         return stack;
     }
 
+    // Returns a tuple (picked ball, remaining hand)
     private List<(long, long)> GetHandList() {
         List<(long, long)> handList = new();
         long prevBall = 0;
@@ -127,6 +131,7 @@ record Zuma {
         return handList;
     }
 
+    // Returns a List of board states with possible inserting holes
     private List<long> GetBoardList() {
         List<long> boardList = new();
         long insBoard = this.Board << 3;
@@ -145,6 +150,7 @@ record Zuma {
         return boardList;
     }
 
+    // Convert string representation to bit-based representation
     private static long Encode(string stateStr, bool sortFlag) {
         List<char> charList = stateStr.ToList();
         if (sortFlag)
@@ -154,6 +160,7 @@ record Zuma {
                        .Aggregate(0L, (stateBit, ball) => (stateBit << 3 | ball));
     }
 
+    // Convert a char to a 3-bit group
     private static long Encode(char ch) => ch switch {
         'R' => 0x1,
         'G' => 0x2,
