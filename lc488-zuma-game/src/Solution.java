@@ -16,7 +16,6 @@ import java.util.HashSet;
  *   - Memory (45.54 MB)
  */
 class Solution {
-    
     public int findMinStep(String board, String hand) {
         final Zuma zuma = Zuma.create(board, hand);
         final HashSet<Long> visited = new HashSet<>();
@@ -57,7 +56,7 @@ record Zuma(long board, long hand) {
         );
     }
 
-    // Finds and returns a list of immediate neighbors of this Zuma state
+    // Returns a list of neighbors of this state, or null if board has cleared.
     public ArrayList<Zuma> getNextLevel(int depth, HashSet<Long> visited) {
         final ArrayList<Zuma> next = new ArrayList<>();
         final ArrayList<long[]> handList = this.buildHandList();
@@ -66,41 +65,43 @@ record Zuma(long board, long hand) {
         
         for (long[] pair : handList) {
             for (int i = 0; i < size; ++i) {
-                final long nextBoard = computeBoard(boardList[i], pair[0], i * 3, depth);
-                if (nextBoard == -1)
+                final long rawBoard = pruningCheck(boardList[i], pair[0], i * 3, depth);
+                if (rawBoard == -1)
                     continue;
 
-                final Zuma z = new Zuma(nextBoard, pair[1]);
-                if (z.board == 0)
+                final long nextBoard = updateBoard(rawBoard);
+                if (nextBoard == 0)
                     return null;
-                
-                if (z.hand == 0 || visited.contains(nextBoard))
+
+                if (pair[1] == 0 || visited.contains(nextBoard))
                     continue;
                 
                 visited.add(nextBoard);
-                next.add(z);
+                next.add(new Zuma(nextBoard, pair[1]));
             }
         }
         return next;
     }
 
-    // Compute new board state by removing all consecutive balls recursively
-    private long computeBoard(long insBoard, long ball, int pos, int depth) {
+    // Make pruning decisions on local state of L, ball and R.
+    private long pruningCheck(long insBoard, long ball, int pos, int depth) {
         final long L = (insBoard >> (pos + 3)) & 0x7;
         final long R = (insBoard >> (pos - 3)) & 0x7;
 
-        // pruning check
         if (depth == 0 && (ball != L && ball != R) && (L != R) ||
             depth  > 0 && (ball != L && ball != R)) {
             return -1;
         }
-        
-        final long board = insBoard | (ball << pos);
+        return insBoard | (ball << pos);
+    }
+
+    // Returns updated board by removing all consecutive balls recursively
+    private long updateBoard(long board) {
         long stack = 0;
-        
+
         for (int i = 0; i < 64; i += 3) {
             final long curr = (board >> i) & 0x7;
-            final long top  = (stack)      & 0x7;
+            final long top  = (stack) & 0x7;
 
             // pop (if possible)
             if ((top > 0) && (curr != top) && 
@@ -143,8 +144,7 @@ record Zuma(long board, long hand) {
         return handList;
     }
 
-    // Insert a 'hole' at each possible position of current board
-    // Returns a list of 'insertable board'
+    // Returns a list of 'insertable board', eg: RB -> {_RB, R_B, RB_}
     private int buildBoardList(long[] buffer) {
         int ptr = 0;
         long ballMask = 0x7;
@@ -176,7 +176,7 @@ record Zuma(long board, long hand) {
         return stateBits;
     }
 
-    // Convert character to an integer
+    // Map a character to an integer
     private static long encode(char ch) {
         return switch(ch) {
             case 'R' -> 0x1;
