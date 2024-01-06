@@ -12,7 +12,7 @@ import java.util.HashSet;
  *   - OOP: use Java record to organize board and hand state
  * 
  * Performance
- *   - Runtime (18 ms)
+ *   - Runtime (15 ms)
  *   - Memory (45.54 MB)
  */
 class Solution {
@@ -89,8 +89,8 @@ record Zuma(long board, long hand) {
         final long L = (insBoard >> (pos + 3)) & 0x7;
         final long R = (insBoard >> (pos - 3)) & 0x7;
 
-        if (depth == 0 && (ball != L && ball != R) && (L != R) ||
-            depth  > 0 && (ball != L && ball != R)) {
+        if (depth == 0 && (ball != R) && (L != R) ||
+            depth  > 0 && (ball != R)) {
             return -1;
         }
         return insBoard | (ball << pos);
