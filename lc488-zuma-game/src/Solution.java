@@ -121,7 +121,7 @@ record Zuma(long board, long hand) {
         return stack;
     }
 
-    // Returns a list of pairs of 'the picked ball' and 'the reamaining hand'
+    // Returns a list of pairs of 'the picked ball' and 'the remaining hand'
     private ArrayList<long[]> buildHandList() {
         final ArrayList<long[]> handList = new ArrayList<>();
         long prevBall = 0;
