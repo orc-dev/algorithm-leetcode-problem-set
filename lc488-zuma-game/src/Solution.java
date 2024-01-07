@@ -4,11 +4,11 @@ import java.util.HashSet;
 
 /**
  * @author: orc-dev
- * @updated: Jun. 2024
+ * @updated: Jan.5 2024
  * 
  * Thoughts log
  *   - BFS + pruning
- *   - bit-based state implementation
+ *   - Bit-based state implementation
  *   - OOP: use Java record to organize board and hand state
  * 
  * Performance
