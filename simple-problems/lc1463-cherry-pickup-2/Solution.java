@@ -10,7 +10,7 @@
  *     We can use the wrapped 'Integer' type with the default value 'null' or 
  *     use the 'int' type and manually fill '-1' as the default value. Both 
  *     approaches may have overhead. We opt for the 'int' type and use '0' as 
- *     the default value. Conceptually, we add 1 cherry for each cell, and when
+ *     the default value. Conceptually, we add 1 cherry for each row, and when
  *     calculating the final result, we minus these virtually added cherries.
  * 
  * Performance
@@ -27,38 +27,37 @@ class Solution {
         final int ncol = grid[0].length;
         dp = new int[nrow][ncol][ncol];
         
-        return dp(0, 0, ncol - 1) - (nrow * 2);
+        return dp(0, 0, ncol - 1) - (nrow);
     }
 
     /**
      * 
      * @param r - current row index
-     * @param c1 - col index of Robot_1
-     * @param c2 - col index of Robot_2
+     * @param x - col index of Robot_1
+     * @param y - col index of Robot_2
      * @return Maximum number of cherries collected when Robot_1 at (r,c1) 
      *         and Robot_2 at (r,c2).
      */
-    private int dp(int r, int c1, int c2) {
+    private int dp(int r, int x, int y) {
         // boundary checks
-        if (c1 < 0 || c1 == dp[0].length ||
-            c2 < 0 || c2 == dp[0].length || r == dp.length) {
+        if (x < 0 || x == dp[0].length ||
+            y < 0 || y == dp[0].length || r == dp.length) {
             return 0;
         }
         // lookup memo-table
-        if (dp[r][c1][c2] > 0) {
-            return dp[r][c1][c2];
+        if (dp[r][x][y] > 0) {
+            return dp[r][x][y];
         }
         // recursive call
         int opt = 0;
-        for (int i = c1 - 1; i <= c1 + 1; ++i) {
-            for (int j = c2 - 1; j <= c2 + 1; ++j) {
+        for (int i = x - 1; i <= x + 1; ++i) {
+            for (int j = y - 1; j <= y + 1; ++j) {
                 if (i < j) {
                     opt = Math.max(opt, dp(r + 1, i, j));
                 }
             }
         }
         // update memo-table
-        dp[r][c1][c2] = opt + grid[r][c1] + grid[r][c2] + 2;
-        return dp[r][c1][c2];
+        return dp[r][x][y] = opt + grid[r][x] + grid[r][y] + 1;
     }
 }
