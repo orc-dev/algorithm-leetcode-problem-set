@@ -62,7 +62,9 @@ class Solution {
     private void optimizeSideBenefit(int resource, int power) {
         while (resource > 0 && !repeatingError.isEmpty()) {
             final int val = repeatingError.poll() - power;
-            if (val >= 3) repeatingError.add(val);
+            if (val >= 3) {
+                repeatingError.add(val);
+            }
             resource--;
         }
     }
