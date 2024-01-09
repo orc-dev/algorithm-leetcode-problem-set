@@ -5,6 +5,12 @@
  * Thoughts log
  *   - index mapping
  *   - Implement an iterator for zigzag-style traversal of a data structure.
+ *    
+ *    0-STEP            1-STEP            2-STEP (out of bound)
+ *     [*]               [*]               [.]
+ *        [*]         [*]   [*]         [.]
+ *           [*]   [*]         [*]   [*]
+ *              [*]               [*]
  * 
  * Performance
  *   - Runtime: (..)
@@ -13,30 +19,30 @@
 class Solution {
 
     public String convert(String s, int numRows) {
-        // Create iterator and container
+        // Create array and zig-iterator
         char[] seq = s.toCharArray();
-        char[] zig = new char[seq.length];
-        ZigzagIter iter = new ZigzagIter(seq.length, numRows);
+        char[] buf = new char[seq.length];
+        ZigIndexIterator zig = new ZigIndexIterator(seq.length, numRows);
         
-        // Append chars in order of the zigzag iterator
-        for (int i = 0; i < zig.length; ++i) {
-            zig[i] = seq[iter.next()];
+        // Append chars in zigzag order
+        for (int i = 0; i < buf.length; ++i) {
+            buf[i] = seq[zig.next()];
         }
-        return new String(zig);
+        return new String(buf);
     }
 }
 
 /**
  * An iterator for virtual 2D-array traversal in a zigzag pattern on a 1D array.
  */
-class ZigzagIter {
-
-    private int i = 0;       // col pointer
-    private int j = 0;       // row pointer
-    private int last = -1;   // last computed index (check duplicates)
+class ZigIndexIterator {
+    
+    private int i = 0;       // virtual col pointer
+    private int j = 0;       // virtual row pointer
+    private int last = -1;   // last computed index (check duplications)
     private int count = 0;   // number of valid-visited indices
     private int SIZE = 0;    // total size
-    private int STEP = 1;    // col pointer step
+    private int STEP = 1;    // i-pointer step
 
     /**
      * Constucts a new ZigIter.
@@ -44,7 +50,7 @@ class ZigzagIter {
      * @param size total size
      * @param nrow number of rows in a zigzag setting
      */
-    public ZigzagIter(int size, int nrow) {
+    public ZigIndexIterator(int size, int nrow) {
         this.SIZE = size;
         this.STEP = Math.max(2 * (nrow - 1), 1);
     }
@@ -57,8 +63,8 @@ class ZigzagIter {
     /** Returns next index */
     public int next() {
         int index = this.getIndex();
-        // if index is negative or is duplicated with last valid one
-        while (index < 0 || index == this.last) {
+        // if index is the same as the last index
+        while (index == this.last) {
             this.moveColPtr();
             index = this.getIndex();
         }
@@ -71,12 +77,10 @@ class ZigzagIter {
         return this.last = index;
     }
 
-    /** Compute the current index */
     private int getIndex() {
         return this.i * this.STEP + this.j;
     }
 
-    /** Move col-pointer */
     private void moveColPtr() {
         if (this.j >= 0) {
             this.i++;
@@ -84,7 +88,6 @@ class ZigzagIter {
         this.j = -this.j;
     }
 
-    /** Move row-pointer */
     private void moveRowPtr() {
         this.i = 0;
         this.j = Math.abs(this.j) + 1;
