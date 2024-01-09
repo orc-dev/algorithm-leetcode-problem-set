@@ -14,8 +14,8 @@ class Solution {
         // Defines bounds parameters
         final int lim = Integer.MAX_VALUE / 10;
         final Bound[] int32_bounds = {
-            new Bound( 1, Integer.MAX_VALUE % 10, Integer.MAX_VALUE),
-            new Bound(-1, Integer.MIN_VALUE % 10, Integer.MIN_VALUE)
+            new Bound( 1, +(Integer.MAX_VALUE % 10), Integer.MAX_VALUE),
+            new Bound(-1, -(Integer.MIN_VALUE % 10), Integer.MIN_VALUE)
         };
 
         // Data and pointers
