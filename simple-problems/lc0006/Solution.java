@@ -11,22 +11,26 @@
  *   - Memory: (..)
  */
 class Solution {
-    public String convert(String s, int numRows) {
-        
-        ZigzagIter iter = new ZigzagIter(s.length(), numRows);
-        char[] zig = new char[s.length()];
 
+    public String convert(String s, int numRows) {
+        // Create iterator and container
+        char[] seq = s.toCharArray();
+        char[] zig = new char[seq.length];
+        ZigzagIter iter = new ZigzagIter(seq.length, numRows);
+        
+        // Append chars in order of the zigzag iterator
         for (int i = 0; i < zig.length; ++i) {
-            zig[i] = s.charAt(iter.next());
+            zig[i] = seq[iter.next()];
         }
         return new String(zig);
     }
 }
 
 /**
- * A class of zigzag iterator.
+ * An iterator for virtual 2D-array traversal in a zigzag pattern on a 1D array.
  */
 class ZigzagIter {
+
     private int i = 0;       // col pointer
     private int j = 0;       // row pointer
     private int last = -1;   // last computed index (check duplicates)
