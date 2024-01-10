@@ -4,7 +4,7 @@
  - On the i-th iteration, `dp[j]` represents the matching state between `pattern[0:i]` and `string[0:j - 1]`.
 
 #### @ DP Tabular Representation
-    ```java
+    ```python
            j: 0     1     2     3     4     5     6    7      8     9 
             | "" | "c" | "a" | "t" | "a" | "n" | "d" | "d" | "o" | "g" | (string: "catanddog")
      i | "" |TRUE|  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  | (init dp table)   
