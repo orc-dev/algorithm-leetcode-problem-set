@@ -14,7 +14,7 @@ class Solution {
         if (nums.length == 1) {
             return 0;
         }
-        return bfs(nums, 0, 0, nums[0], 0);
+        return bfs(nums, 0, 0, 0, 0);
     }
 
     /**
