@@ -5,9 +5,19 @@
 
 #### @ DP Tabular Representation
     ```java
+           j: 0     1     2     3     4     5     6    7      8     9 
+            | "" | "c" | "a" | "t" | "a" | "n" | "d" | "d" | "o" | "g" | (string: "catanddog")
+     i | "" |TRUE|  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  | (init dp table)   
+     0 |"c" |
+     1 |"a*"|
+     2 |"g*"|
+     3 |".*"|
+     4 |"d*"|
+     5 |"d" |
+     6 |"o" |
+     7 |"g" |  - |  -  |  -  |  -  |  -  |  -  |  -  |  -  |  -  | ans |
     
-    
-    
+       (patten: "ca*g*.*d*dog")
     ```
 
 #### @ DP Recursion
