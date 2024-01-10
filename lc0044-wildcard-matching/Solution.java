@@ -47,7 +47,7 @@ class Solution {
             else 
                 return false;
         }
-        // Suffix of pattern should only contains '*'
+        // Suffix of pattern should only contain '*'
         while (i < p.length) {
             if (p[i] != '*')
                 return false;
