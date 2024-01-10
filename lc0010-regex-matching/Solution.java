@@ -3,11 +3,11 @@
  * @update: Jan.9 2024
  * 
  * Tag
- *   # dynamic programming
+ *   - Dynamic programming ( Mealy | O(n^2) | O(n) | iteration )
  * 
  * Performance
- *   - Runtime: (..)
- *   - Memory: (..)
+ *   - Runtime: (1 ms)
+ *   - Memory: (skip)
  */
 class Solution {
     public boolean isMatch(String str, String ptn) {
