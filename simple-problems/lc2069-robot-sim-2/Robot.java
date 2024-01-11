@@ -2,6 +2,9 @@
  * @author: orc-dev
  * @update: Jan.7 2024
  * 
+ * @leetcode: 2069.Walking Robot Simulation II
+ * @tag: design, sim, math (bound count)
+ * 
  * Thoughts
  *   - Math: module calculation to found current pointer within the border
  *   - Math: threshold check

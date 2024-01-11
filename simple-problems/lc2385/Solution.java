@@ -3,7 +3,7 @@
  * @update: Jan.10 2024
  * 
  * @brief: 2385. Amount of time for binary tree to be infected
- * @tags: #[binary tree] #[post traversal]
+ * @tags: binary tree, post traversal
  * 
  * Log
  *   - Three cases: source node, regular node, ancestors of source 

@@ -4,6 +4,9 @@ import java.util.PriorityQueue;
  * @author: orc-dev
  * @update: Jan.8 2024
  * 
+ * @leetcode: 420.Strong Password Checker
+ * @tag: greedy, heap
+ * 
  * Thought log:
  *   - Different operations have varying abilities to address different types 
  *     of errors:

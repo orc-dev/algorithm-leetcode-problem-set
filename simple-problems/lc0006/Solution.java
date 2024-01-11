@@ -2,6 +2,9 @@
  * @author: orc-dev
  * @update: Jan.9 2024
  * 
+ * @leetcode: 6.Zigzag Conversion
+ * @tag: string, index mapping
+ * 
  * Thoughts log
  *   - index mapping
  *   - Implement an iterator for zigzag-style traversal of a data structure.

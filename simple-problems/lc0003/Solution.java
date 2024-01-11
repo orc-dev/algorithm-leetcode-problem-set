@@ -2,6 +2,9 @@
  * @author: orc-dev
  * @update: Jan.7 2024
  * 
+ * @leetcode: 3.Longest Substring Without Repeating Characters
+ * @tag: sliding window, hash table
+ * 
  * Tag:
  *   - Sliding window: two-pointers
  *   - Hash Table: Array-based implementation (instead of HashMap)

@@ -3,6 +3,7 @@
  * @update: Jan.10 2024
  * 
  * @leetcode: 55.Jump Game
+ * @tag: bfs
  * @about: 45.Jump Game II
  * 
  * Performance

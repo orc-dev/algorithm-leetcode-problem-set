@@ -1,5 +1,9 @@
 /**
+ * @author: orc-dev
  * @update: Jan.9 2024
+ * 
+ * @leetcode: Palindrome Number
+ * @tag: math
  * 
  * @Leetcode Idea:
  *   - Convert half of the value

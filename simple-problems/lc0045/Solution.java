@@ -2,7 +2,8 @@
  * @author: orc-dev
  * @update: Jan.10 2024
  * 
- * @tag: #[BFS]
+ * @leetcode: 45.Jump Game II
+ * @tag: bfs
  * 
  * Performance:
  *   - Runtime: (..)

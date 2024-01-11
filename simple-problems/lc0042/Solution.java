@@ -2,6 +2,9 @@
  * @author: orc-dev
  * @update: Jan.10 2024
  * 
+ * @leetcode: 42.Trapping Rain Water
+ * @tag: two pointers
+ * 
  * Log
  *   - double pointers
  *   - traversal from end to center
