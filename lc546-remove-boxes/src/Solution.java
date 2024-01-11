@@ -2,6 +2,9 @@
  * @author: orc-dev
  * @update: Jan.5 2024
  * 
+ * @leetcode: 546.Remove Boxes
+ * @tag: dp (mealy, 1dmd, incise)
+ * 
  * Performance
  *   - Runtime: 19 (ms)
  *   - Memory: 45 (MB)
