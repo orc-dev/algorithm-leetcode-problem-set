@@ -5,9 +5,10 @@
  * @leetcode: 87.Scramble String
  * @tag: dp (moore, high-di)
  * 
- * implementation:
+ * implementation
  *   - Space saving
  *   - OOP: DPTable
+ *   - index mapping
  * 
  * Performance
  *   - Runtime: (..)
