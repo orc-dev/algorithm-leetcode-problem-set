@@ -17,8 +17,8 @@
  */
 class Robot {
     // Private fields
-    private final String[] DIR = {"East", "North", "West", "South"};
-    private int[] thold;
+    private final static String[] DIR = {"East", "North", "West", "South"};
+    private final int[] thold = new int[4];
     private int ptr = 0;
     private int d = 0;
     private int x = 0;
@@ -29,11 +29,10 @@ class Robot {
     public Robot(int width, int height) {
         final int w = width - 1;
         final int h = height - 1;
-        thold = new int[] {
-            w,
-            w + h,
-            w + w + h,
-            w + w + h + h};
+        thold[0] = w;
+        thold[1] = w + h;
+        thold[2] = w + w + h;
+        thold[3] = w + w + h + h;
     }
     
     // Clear 'updated' flag and compute 'ptr' by modulo (2w + 2h).
@@ -94,6 +93,6 @@ class Robot {
         if (!this.updated) {
             this.compute();
         }
-        return this.DIR[this.d];
+        return Robot.DIR[this.d];
     }
 }
