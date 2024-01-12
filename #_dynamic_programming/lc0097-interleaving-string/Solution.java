@@ -9,29 +9,30 @@
  *   - if [TOP] is true, check foo:zip match
  *   - if [LSH] is true, check bar:zip match
  * 
- * dp.tabular
- *            0  1  2  3  4  5  6   index of 'j'
- *               -  0  1  2  3  4   index of bar
- *               "  a  a  b  c  c   chars of bar  
- *           [T][T][T][T][T][T][T]  <- init dp[length.bar + 2]
- *   0  -  " [ ][ ][ ][ ][ ][ ][ ]
- *   1  0  d [ ][ ][ ][ ][ ][ ][ ]
- *   2  1  b [ ][ ][ ][ ][ ][ ][ ]
- *   3  2  b [ ][ ][ ][ ][ ][ ][ ]
- *   4  3  c [ ][ ][ ][ ][ ][ ][ ]
- *   5  4  a [ ][ ][ ][ ][ ][ ][*]  <- return dp[legnth.bar + 1]
- *   |  |  |
- *   |  |  |-- chars of foo
- *   |  |-- index of foo
- *   |-- index of 'i'
- * 
  * Performance
  *   - Runtime: (..)
  *   - Memory: (..) 
  *   * Follow up requirement achieves: use O(s2.length) extra memory.
  */
 class Solution {
-    /** Returns whether s3 is formed by an interleaving of s1 and s2. */
+
+    /**
+     * dp.tabular
+     *            0  1  2  3  4  5  6   index of 'j'
+     *               -  0  1  2  3  4   index of bar
+     *               "  a  a  b  c  c   chars of bar  
+     *           [F][T][F][F][F][F][F]  <- init dp[length.bar + 2]
+     *   0  -  " [ ][ ][ ][ ][ ][ ][ ]
+     *   1  0  d [ ][ ][ ][ ][ ][ ][ ]
+     *   2  1  b [ ][ ][ ][ ][ ][ ][ ]
+     *   3  2  b [ ][ ][ ][ ][ ][ ][ ]
+     *   4  3  c [ ][ ][ ][ ][ ][ ][ ]
+     *   5  4  a [ ][ ][ ][ ][ ][ ][*]  <- return dp[legnth.bar + 1]
+     *   |  |  |
+     *   |  |  |-- chars of foo
+     *   |  |-- index of foo
+     *   |-- index of 'i'
+     */
     public boolean isInterleave(String s1, String s2, String s3) {
         final char[] foo = s1.toCharArray();
         final char[] bar = s2.toCharArray();
@@ -42,7 +43,7 @@ class Solution {
         }
         // dp.init
         final boolean[] dp = new boolean[bar.length + 2];
-        java.util.Arrays.fill(dp, true);
+        dp[1] = true;
 
         // dp.iteration
         for (int i = 0; i <= foo.length; ++i) {
