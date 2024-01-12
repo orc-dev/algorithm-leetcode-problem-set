@@ -12,7 +12,7 @@ import java.util.List;
  *   - dp (Catalan sequence)
  *   - organize the Cartesian Product of 'root * leftSet * rightSet'
  * 
-  * Implementation:
+ * Implementation:
  *   - Deep-Copy Approach:
  *     Previous solutions did not return trees with a deep-copy style. In 
  *     those solutions, trees in the list were interleaved with each other, 
@@ -43,7 +43,6 @@ import java.util.List;
  *   - Memory: (..) (may use less spaces)
  */
 class Solution {
-
     public List<TreeNode> generateTrees(int n) {
         // Compute size
         final int[] size = new int[n + 1];
