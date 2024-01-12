@@ -116,9 +116,9 @@ class Solution {
     private TreeNode buildTree(int seq) {
         TreeNode t = null;
         int val;
-        while ((val = seq & 0xf) != 0 && val != 0xf) {
+        while ((val = seq & 0xf) != 0) {
             t = insert(t, val);
-            seq >>= 4;
+            seq >>>= 4;  // Use unsigned right shift
         }
         return t;
     }
