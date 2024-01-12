@@ -18,20 +18,20 @@ class Solution {
 
     /**
      * dp.tabular
-     *            0  1  2  3  4  5  6   index of 'j'
-     *               -  0  1  2  3  4   index of bar
-     *               "  a  a  b  c  c   chars of bar  
-     *           [F][T][F][F][F][F][F]  <- init dp[length.bar + 2]
-     *   0  -  " [ ][ ][ ][ ][ ][ ][ ]
-     *   1  0  d [ ][ ][ ][ ][ ][ ][ ]
-     *   2  1  b [ ][ ][ ][ ][ ][ ][ ]
-     *   3  2  b [ ][ ][ ][ ][ ][ ][ ]
-     *   4  3  c [ ][ ][ ][ ][ ][ ][ ]
-     *   5  4  a [ ][ ][ ][ ][ ][ ][*]  <- return dp[legnth.bar + 1]
+     *               1  2  3  4  5  6  <- dp.dimension.j (stable)
+     *               -  0  1  2  3  4  <- bar.index
+     *               "  a  a  b  c  c  <- bar.chars  
+     *           [F][T][F][F][F][F][F] <- dp.init.[bar.length + 2]
+     *   0  -  " [F][ ][ ][ ][ ][ ][ ]
+     *   1  0  d [F][ ][ ][ ][ ][ ][ ]
+     *   2  1  b [F][ ][ ][ ][ ][ ][ ]
+     *   3  2  b [F][ ][ ][ ][ ][ ][ ]
+     *   4  3  c [F][ ][ ][ ][ ][ ][ ]
+     *   5  4  a [F][ ][ ][ ][ ][ ][*] <- dp.return
      *   |  |  |
-     *   |  |  |-- chars of foo
-     *   |  |-- index of foo
-     *   |-- index of 'i'
+     *   |  |  +-- foo.chars
+     *   |  +-- foo.index
+     *   +-- dp.dimension.i (transient)
      */
     public boolean isInterleave(String s1, String s2, String s3) {
         final char[] foo = s1.toCharArray();
