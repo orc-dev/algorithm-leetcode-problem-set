@@ -44,15 +44,21 @@ import java.util.List;
  */
 class Solution {
 
-    @SuppressWarnings("unchecked")
     public List<TreeNode> generateTrees(int n) {
+        // Compute size
+        final int[] size = new int[n + 1];
+        size[0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                size[i] += size[j] * size[i - j - 1];
+            }
+        }
         // dp.init
-        ArrayList<Integer>[] table = new ArrayList[n + 1];
-        table[0] = new ArrayList<>();
-        table[0].add(0);
-
+        int[][] table = new int[n + 1][];
+        table[0] = new int[]{0};
+        
         List<TreeNode> result = new ArrayList<>();
-        List<Integer> treeSeq = treeSeq(n, table);  // dp.run
+        int[] treeSeq = treeSeq(n, table, size);
 
         // Create trees from sequence and add to list
         for (int seq : treeSeq) {
@@ -83,23 +89,23 @@ class Solution {
      * @param table dp memoisation table
      * @return a list of integers, each represents a BST with unique struct.
      */
-    private List<Integer> treeSeq(int n, ArrayList<Integer>[] table) {
+    private int[] treeSeq(int n, int[][] table, int[] size) {
         if (table[n] != null) {
             return table[n];
         }
-        table[n] = new ArrayList<>();
+        final int[] list = new int[size[n]];
+        int i = 0;
+
         // Recursively construct new tree sequence based on 'previous' results
         for (int root = 1; root <= n; ++root)
-            for (int seqL : treeSeq(root - 1, table))
-                for (int seqR : treeSeq(n - root, table))
+            for (int seqL : treeSeq(root - 1, table, size))
+                for (int seqR : treeSeq(n - root, table, size))
                     // dp.recursion
-                    table[n].add(
-                        root 
-                        | (seqL) << (4) 
-                        | (seqR + offset(root, n - root)) << (root << 2)
-                    );
+                    list[i++] = (root)
+                              | (seqL) << (4) 
+                              | (seqR + offset(root, n - root)) << (root << 2);
         
-        return table[n];
+        return table[n] = list;
     }
 
     /** Eg. mask(0x7, 3) returns 0x777 */
