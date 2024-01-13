@@ -17,15 +17,12 @@ class Solution {
         if (node == null) {
             return 0;
         }
-        // Post traversal to get messages from child nodes
         final int L = dfs(node.left);
         final int R = dfs(node.right);
-        final int maxChild = Math.max(0, Math.max(L, R));
-        final int maxLocal = node.val + maxChild;
+        final int maxLocal = node.val + Math.max(L, R);
 
-        // Update global max and return local-transmittable max
         updateMax(maxLocal, L + R + node.val);
-        return maxLocal;
+        return Math.max(0, maxLocal);
     }
     
     private void updateMax(int... nums) {
