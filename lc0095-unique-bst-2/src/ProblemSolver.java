@@ -5,7 +5,9 @@ class ProblemSolver {
     
     public static void main(String[] args) {
         Solution solver = new Solution();
-        List<TreeNode> list = solver.generateTrees(3);
+        List<TreeNode> list = solver.generateTrees(8);
+
+        list = solver.generateTrees(3);
         for (TreeNode t : list) {
             System.out.println(toString(t));
         }

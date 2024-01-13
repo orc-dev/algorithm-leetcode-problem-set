@@ -43,6 +43,19 @@ import java.util.List;
  *   - Memory: (..) (may use less spaces)
  */
 class Solution {
+
+    private final int[] OFFSET = {
+        0x00000000, 0x11111111, 0x22222222, 
+        0x33333333, 0x44444444, 0x55555555, 
+        0x66666666, 0x77777777, 0x88888888
+    };
+
+    private final int[] MASK = {
+        0x0,      0xF,        0xFF,     
+        0xFFF,    0xFFFF,     0xFFFFF, 
+        0xFFFFFF, 0xFFFFFFF , 0xFFFFFFFF
+    };
+
     public List<TreeNode> generateTrees(int n) {
         // Compute size
         final int[] size = new int[n + 1];
@@ -92,29 +105,23 @@ class Solution {
         if (table[n] != null) {
             return table[n];
         }
-        final int[] list = new int[size[n]];
+        table[n] = new int[size[n]];
         int i = 0;
 
         // Recursively construct new tree sequence based on 'previous' results
-        for (int root = 1; root <= n; ++root)
-            for (int seqL : treeSeq(root - 1, table, size))
-                for (int seqR : treeSeq(n - root, table, size))
-                    // dp.recursion
-                    list[i++] = (root)
-                              | (seqL) << (4) 
-                              | (seqR + offset(root, n - root)) << (root << 2);
-        
-        return table[n] = list;
-    }
+        for (int root = 1; root <= n; ++root) {
+            final int offset = OFFSET[root] & MASK[n - root];
 
-    /** Eg. mask(0x7, 3) returns 0x777 */
-    private int offset(int unit, int repeat) {
-        int mask = 0;
-        while (repeat > 0) {
-            mask = mask << 4 | unit;
-            repeat--;
+            for (int seqL : treeSeq(root - 1, table, size)) {
+                for (int seqR : treeSeq(n - root, table, size)) {
+                    // dp.recursion
+                    table[n][i++] = root 
+                                  | (seqL << 4) 
+                                  | (seqR + offset) << (root * 4);
+                }
+            }
         }
-        return mask;
+        return table[n];
     }
 
     /** Build a BST from given sequence. */
