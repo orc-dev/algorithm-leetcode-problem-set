@@ -2,8 +2,9 @@
  * @author: orc-dev
  * @update: Jan.13 2024
  * 
- * @leetcode: Best Time to Buy and Sell Stock III
+ * @leetcode: 123. Best Time to Buy and Sell Stock III
  * @tag: dp (mealy)
+ * @see: 188. Best Time to Buy and Sell Stock IV
  * 
  * dp.state.diagram
  *          -price        +price         -price        +price
