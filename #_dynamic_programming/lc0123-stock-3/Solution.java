@@ -6,13 +6,13 @@
  * @tag: dp (mealy)
  * 
  * dp.state.diagram
- *             -price           +price            -price           +price
- *    { INIT } ------> { Buy1 } ------> { Sell1 } ------> { Buy2 } ------> { Sell2 }
- *      |__^             |__^             |__^              |__^             |__^
- * 
+ *          -price        +price         -price        +price
+ *    (INIT) -----> (BUY1) -----> (SELL1) -----> (BUY2) -----> (SELL2)
+ *     |__^          |__^          |__^           |__^          |__^
+ *    
  * dp.specification
- *   "On the i-th day, dp.state represents the maximum profit can be achieved at that state"
- * 
+ *   - On the i-th day, dp.state represents the maximum profit can be 
+ *     achieved at that state.
  */
 class Solution {
     public int maxProfit(int[] prices) {
