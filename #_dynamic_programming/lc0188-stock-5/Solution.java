@@ -18,7 +18,7 @@ class Solution {
             int sign = 1;
             for (int i = 0; i < pf.length - 1; ++i) {
                 pf[i] = Math.max(pf[i], pf[i + 1] + sign * p);
-                sign = ~(sign - 1);  // 'sign' oscillates between 1 and -1
+                sign = -sign;
             }
         }
         return pf[0];
