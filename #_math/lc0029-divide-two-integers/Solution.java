@@ -4,9 +4,17 @@
  * 
  * @leetcode: 29. Divide Two Integers
  * @tag: math, bit manipulation
+ * 
+ * Example: a = -80, b = -3
+ *   (-80,  -3,  1)                    return ( -2, 26)
+ *   (-80,  -6,  2)                    return ( -2, 26)
+ *   (-80, -12,  4)                    return ( -8, 24)
+ *   (-80, -24,  8)                    return ( -8, 24)
+ *   (-80, -48, 16) --> hit: 'a > 2b', return (-32, 16)
  */
 class Solution {
     public int divide(int a, int b) {
+        // The only base case
         if (a == Integer.MIN_VALUE && b == -1) {
             return Integer.MAX_VALUE;
         }
