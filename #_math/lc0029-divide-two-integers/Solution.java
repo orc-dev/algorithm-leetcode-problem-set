@@ -6,33 +6,30 @@
  * @tag: math, bit manipulation
  * 
  * Example: a = -80, b = -3
- *   (-80,  -3,  1)                    return ( -2, 26)
- *   (-80,  -6,  2)                    return ( -2, 26)
- *   (-80, -12,  4)                    return ( -8, 24)
- *   (-80, -24,  8)                    return ( -8, 24)
- *   (-80, -48, 16) --> hit: 'a > 2b', return (-32, 16)
+ *   (-80,  -3,  1)                 return ( -2, 26)
+ *   (-80,  -6,  2)                 return ( -2, 26)
+ *   (-80, -12,  4)                 return ( -8, 24)
+ *   (-80, -24,  8)                 return ( -8, 24)
+ *   (-80, -48, 16)                 return (-32, 16)
+ *   (-80, -96, 32) -> hit (a > b), return (-80,  0)
  */
 class Solution {
     public int divide(int a, int b) {
-        // The only base case
         if (a == Integer.MIN_VALUE && b == -1) {
             return Integer.MAX_VALUE;
         }
-        final int signsXor = (a >>> 31) ^ (b >>> 31);
-        final Result out = negDiv(neg(a), neg(b), 1);
-
-        return (signsXor == 0) ? out.quo : -out.quo;
+        final int xorSignBits = (a ^ b) >>> 31;
+        final Result out = negDiv(false, neg(a), neg(b), -1);
+        
+        return (xorSignBits == 0) ? -out.quo : out.quo;
     }
 
     /** Division of two negative numbers */
-    private Result negDiv(int a, int b, int k) {
-        if (a > b) {
-            return new Result(0, 0);
+    private Result negDiv(boolean overflow, int a, int b, int k) {
+        if (overflow || a > b) {
+            return new Result(a, 0);
         }
-        if (aGreaterThan2b(a, b)) {
-            return new Result(a - b, k);
-        }
-        Result out = negDiv(a, b << 1, k << 1);
+        Result out = negDiv(b < 0xc000_0000, a, b << 1, k << 1);
         if (out.rem <= b) {
             out.rem -= b;
             out.quo += k;
@@ -43,12 +40,6 @@ class Solution {
     /** Force a number to be negative */
     private int neg(int num) {
         return (num < 0) ? num : -num;
-    }
-
-    /** Safely checks if a is greater than 2b, avoiding overflow for 2b */
-    private boolean aGreaterThan2b(int a, int b) {
-        return (a >> 1) >  b || 
-               (a >> 1) == b && (a & 1) == 1;
     }
 }
 
