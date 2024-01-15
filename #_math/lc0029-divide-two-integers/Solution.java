@@ -14,6 +14,7 @@
  *   (-80, -96, 32) -> hit (a > b), return (-80,  0)
  */
 class Solution {
+    /** Returns outcome of integer division (a / b) */
     public int divide(int a, int b) {
         if (a == Integer.MIN_VALUE && b == -1) {
             return Integer.MAX_VALUE;
