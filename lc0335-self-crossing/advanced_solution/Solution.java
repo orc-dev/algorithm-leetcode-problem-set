@@ -28,31 +28,31 @@
  *   - Memory: constant
  */
 class Solution {
-    public boolean isSelfCrossing(int[] d) {
+    public boolean isSelfCrossing(int[] dist) {
         int i = 2;  // init
         // G_loop
-        while (i < d.length && d[i] > d[i - 2]) {
+        while (i < dist.length && dist[i] > dist[i - 2]) {
             i++;
         }
         i++;
         // terminal check
-        if (i >= d.length) {
+        if (i >= dist.length) {
             return false;
         }
         // check point
-        if (i >= 4 && hitSelf(d, i)) {
+        if (i >= 4 && hitSelf(dist, i)) {
             return true;
         }
         // L_loop
-        while (i < d.length && d[i] < d[i - 2]) {
+        while (i < dist.length && dist[i] < dist[i - 2]) {
             i++;
         }
-        return i < d.length;
+        return i < dist.length;
     }
 
     /** Perform 'HIT_OUT' checking */
-    private boolean hitSelf(int[] d, int i) {
-        return d[i - 2] <= d[i - 4] + d[i] &&
-               d[i - 3] <= d[i - 1] + ((i < 5) ? 0 : d[i - 5]);
+    private boolean hitSelf(int[] dist, int i) {
+        return dist[i - 2] <= dist[i - 4] + dist[i] &&
+               dist[i - 3] <= dist[i - 1] + ((i < 5) ? 0 : dist[i - 5]);
     }
 }
