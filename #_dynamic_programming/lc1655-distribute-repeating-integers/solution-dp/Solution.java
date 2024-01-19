@@ -29,11 +29,11 @@ class Solution {
         final boolean[] dp = new boolean[n];
         dp[0] = true;
 
-        for (final int re : resource) {
+        for (int rsc : resource) {
             // Build local state
             int k = 0;
-            for (final int dm : demandPS) {
-                local[k++] = (re >= dm);
+            for (int dmd : demandPS) {
+                local[k++] = (rsc >= dmd);
             }
             // Build 'dp.to_curr' from 'local' and 'dp.to_prev'
             for (int i = n - 1; i > 0; --i) {
