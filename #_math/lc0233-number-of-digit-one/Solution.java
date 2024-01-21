@@ -6,8 +6,12 @@
  * @tag: math. dp
  * 
  * @log
- *     0  1  2  3  4  5  6  7  8  9
- *    [ ][#][ ][ ][ ][ ][ ][ ][ ][ ]
+ *      0  1  2  3  4  5  6  7  8  9
+ *     [ ][#][ ][ ][ ][ ][ ][ ][ ][ ]
+ * 
+ *   - 'The number of entire-white-squares' * '1's in each white square'
+ *   - 'The number of 1's covered in the shadow square'
+ *   - 'The remaining 1's' are handled recursively by next level
  * 
  * Performance
  *   - Runtime: (0 ms) O(logn)
@@ -17,7 +21,7 @@ class Solution {
     public int countDigitOne(int n) {
         return countOne(9, (int) 1e9, n, 0);
     }
-    
+
     /**
      * For each position, calculate the ones.
      * 
