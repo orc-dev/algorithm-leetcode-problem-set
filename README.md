@@ -43,7 +43,13 @@
 - [1239. Maximum Length of a Concatenated String with Unique Characters](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc1239/Solution.java)
 
 ### Regular Problems
-
+- [65. Valid Number](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0065-valid-number/Solution.java)
+- [84. Largest Rectangle in Histogram](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0084-histogram/Solution.java)
+- [420. Strong Password Checker](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0420-password-checker/Solution.java)
+- [907. Sum of Subarray Minimums](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/regular-problems/lc0907-sum-subarray-mins)
+  [(Iteration)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0907-sum-subarray-mins/solution-iterative/Solution.java)
+  [(Recursion)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0907-sum-subarray-mins/solution-recursive/Solution.java)
+- [2069. Walking Robot Simulation II](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc2069-robot-sim-2/Robot.java)
 
 ### Easy Problems
 - [11. Container With Most Water](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc0011/Solution.java)
