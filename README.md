@@ -50,7 +50,6 @@
   [(Iteration)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0907-sum-subarray-mins/solution-iterative/Solution.java)
   [(Recursion)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0907-sum-subarray-mins/solution-recursive/Solution.java)
 - [2069. Walking Robot Simulation II](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc2069-robot-sim-2/Robot.java)
-
 - [3. Longest Substring Without Repeating Characters](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0003/Solution.java)
 - [6. Zigzag Conversion](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0006/Solution.java)
 - [7. Reverse Integer](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0007/Solution.java)
