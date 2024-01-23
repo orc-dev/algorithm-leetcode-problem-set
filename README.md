@@ -32,7 +32,10 @@
   [(DP)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc1655-distribute-repeating-integers/solution-dp/Solution.java)
 
 ### Math
-
+- [29. Divide Two Integers](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_math/lc0029-divide-two-integers/Solution.java)
+- [149. Max Points on a Line](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_math/lc0149-max-points-on-a-line/Solution.java)
+- [233. Number of Digit One](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_math/lc0233-number-of-digit-one/Solution.java)
+- [593. Valid Square](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_math/lc0593/Solution.java)
 
 ### Backtracking
 
