@@ -1,4 +1,6 @@
-## Winter Break Updates Jan.5 - Jan.22, 2024
+## 2024 Winter Break Updates
+- Jan.5 - Jan.22
+- 56 problems
 
 ### Selected Problems
  - [488. Zuma Game](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc488-zuma-game/src/Solution.java)
