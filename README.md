@@ -46,3 +46,7 @@
 
 
 ### Easy Problems
+- [11. Container With Most Water](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc0011/Solution.java)
+- [1347. Minimum Number of Steps to Make Two Strings Anagram](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc1347/Solution.java)
+- [1657. Determine if Two Strings Are Close](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc1657/Solution.java)
+- [1704. Determine if String Halves Are Alike](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc1704/Solution.java)
