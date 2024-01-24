@@ -69,6 +69,7 @@
 - [468. Validate IP Address](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0468/Solution.java)
 - [1026. Maximum Difference Between Node and Ancestor](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc1026/Solution.java)
 - [2385. Amount of time for binary tree to be infected](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc2385/Solution.java)
+- [1457. Pseudo-Palindromic Paths in a Binary Tree](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc1457/Solution.java)
 
 ### Easy Problems
 - [11. Container With Most Water](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/easy-problems/lc0011/Solution.java)
