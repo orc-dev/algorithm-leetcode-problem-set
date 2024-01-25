@@ -45,7 +45,9 @@
 - [247. Strobogrammatic Number II](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0247/Solution.java)
 - [1239. Maximum Length of a Concatenated String with Unique Characters](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc1239/Solution.java)
 - [22. Generate Parentheses](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0022/Solution.java)
-
+- [78. Subsets](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/%23_backtracking/lc0078)
+  [(complete binary tree)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0078/select_or_not/Solution.java)
+  [(subset tree)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0078/target_list/Solution.java)
 ### Regular Problems
 - [65. Valid Number](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0065-valid-number/Solution.java)
 - [84. Largest Rectangle in Histogram](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0084-histogram/Solution.java)
