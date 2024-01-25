@@ -24,6 +24,14 @@ import java.util.List;
  * This approach optimizes stack space by adding subset instances at each 
  * recursive node, saving space for non-selection cases. In contrast, the 
  * alternative approach adds valid subsets only at the leaf nodes.
+ * 
+ *                     .---------- { } ----------.
+ *                    /             |             \
+ *              .-- {1} --.        {2}.           {3}
+ *             /           \           \        
+ *         .{1,2}         {1,3}       {2,3}     
+ *        /        
+ *      {1,2,3}    
  */
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {

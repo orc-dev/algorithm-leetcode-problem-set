@@ -12,6 +12,13 @@ import java.util.List;
  * This approach is very intuitive, we check each elements in the source
  * list, and build two branches (picking it and not picking it), then we 
  * check next.
+ *                     .---------- { } ----------.
+ *                    /                           \
+ *             .--- { } ---.                  .--- {1} ---.
+ *            /             \                /             \
+ *         .{ }.           .{2}.          .{1}.          .{1,2}.
+ *        /     \         /     \        /     \        /       \ 
+ *      { }     {3}     {2}    {2,3}   {1}    {1,3}  {1,3}    {1,2,3}
  */
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
