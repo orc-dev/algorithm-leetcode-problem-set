@@ -44,6 +44,7 @@
 - [17. Letter Combinations of a Phone Number](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0017/Solution.java)
 - [247. Strobogrammatic Number II](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0247/Solution.java)
 - [1239. Maximum Length of a Concatenated String with Unique Characters](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc1239/Solution.java)
+- [22. Generate Parentheses](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_backtracking/lc0022/Solution.java)
 
 ### Regular Problems
 - [65. Valid Number](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0065-valid-number/Solution.java)
