@@ -33,6 +33,7 @@
   [(Backtracking)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc1655-distribute-repeating-integers/solution-backtracking/Solution.java)
   [(DP)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc1655-distribute-repeating-integers/solution-dp/Solution.java)
 - [1143. Longest Common Subsequence](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc1143/Solution.java)
+- [576. Out of Boundary Paths](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0576/Solution.java)
 
 ### Math
 - [29. Divide Two Integers](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_math/lc0029-divide-two-integers/Solution.java)
