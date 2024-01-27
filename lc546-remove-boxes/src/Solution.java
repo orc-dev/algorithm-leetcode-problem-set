@@ -70,7 +70,7 @@ class Solution {
 
     // Count the max frequency of boxes
     private int countMaxFreq(int[] boxes) {
-        final int[] freq = new int[100];
+        final int[] freq = new int[101];
         int max = 0;
         for (int x : boxes) {
             freq[x]++;
