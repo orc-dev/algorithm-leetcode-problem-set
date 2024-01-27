@@ -39,8 +39,8 @@ import java.util.List;
  *        We only need to use the tree sequence 0x312 plus the offset 0x222.
  * 
  * Performance
- *   - Runtime: (..) (maybe a bit slower than the shallow-copy approach)
- *   - Memory: (..) (may use less spaces)
+ *   - Runtime: (1 ms) (maybe a bit slower than the shallow-copy approach)
+ *   - Memory: (skip) (may use less spaces)
  */
 class Solution {
 
