@@ -17,7 +17,7 @@ import java.util.Set;
  *   - Memory (44.5 MB)
  */
 class Solution {
-    
+    /** record: stores a board state and a hand state */
     record ZumaState(long board, long hand){ }
     
     public int findMinStep(String board, String hand) {
@@ -35,7 +35,7 @@ class Solution {
         return bfs(curr, visited, 1);
     }
 
-
+    /** A BFS from step 1 to search for some optimal solution. */
     private int bfs(List<ZumaState> curr, Set<Long> visited, int step) {
         if (curr.isEmpty()) return -1;
 
@@ -46,6 +46,7 @@ class Solution {
             final List<long[]> handList = generateHandList(state.hand());
             int size = generateBoardList(boardList, state.board());
             
+            // let hand be outer loop and board be inner loop (⚡⚡)
             for (long[] p : handList) {
                 final long ball    = p[0];
                 final long newHand = p[1];
@@ -54,7 +55,7 @@ class Solution {
                     final long L = fetch(boardList[i], i + 1);
                     final long R = fetch(boardList[i], i - 1);
                     
-                    // Pruning check
+                    // Pruning check (⚡⚡⚡⚡)
                     if (((step > 1) || (L != R)) && ball != L) {
                         continue;
                     }
@@ -77,10 +78,11 @@ class Solution {
     }
 
 
+    /** Compute the board after removing consecutive balls recursively. */
     private long updateBoard(long board, int hi, int lo) {
         // Trerminal check: empty or diff-chars
         if (lo < 0 || fetch(board, hi) != fetch(board, lo)) {
-            return removeRange(board, hi, lo);
+            return removeBetween(board, hi, lo);
         }
         // Settings for checking current pass
         final long currBall = fetch(board, hi);
@@ -96,24 +98,19 @@ class Solution {
             lo--;
             count++;
         }
-        // If not enough contigurous balls can be canceled
+        // If not enough consecutive balls
         if (count < 3) {
-            return removeRange(board, hi, lo);
+            return removeBetween(board, hi, lo);
         }
         return updateBoard(board, hi + 1, lo - 1);
     }
 
 
-    /** Returns the "ball" at index-th "position" */
-    private long fetch(long state, int index) {
-        return (state >> (index * 3)) & 0b111;
-    }
-
-    
+    /** Return a list of raw board with placeholder, eg. RR_B */
     private int generateBoardList(long[] list, long board) {
         int k = 0;
         while (true) {
-            list[k] = insertHelper(board, k);
+            list[k] = insertHole(board, k);
             if (fetch(board, k) == 0)
                 break;
             k++;
@@ -121,7 +118,7 @@ class Solution {
         return k;
     }
 
-
+    /** Return a list of pairs "selected ball", "remaining hand" */
     private List<long[]> generateHandList(long hand) {
         final List<long[]> handList = new ArrayList<>();
         long lastBall = 0L;
@@ -132,12 +129,49 @@ class Solution {
                 break;
 
             if (pickBall != lastBall) {
-                final long nextHand = removeHelper(hand, i);
+                final long nextHand = removeBall(hand, i);
                 handList.add(new long[]{pickBall, nextHand});
             }
             lastBall = pickBall;
         }
         return handList;
+    }
+
+
+    /** Returns the "ball" at index-th "position" */
+    private long fetch(long state, int k) {
+        return (state >> (k * 3)) & 0b111;
+    }
+
+    
+    /** Return a 64-bit with n 1's on the least significant side. */
+    private long onesMask(int n) {
+        if (n < 1) {
+            return 0L;
+        }
+        return (-1L) >>> (64 - n);
+    }
+
+
+    /** Remove balls inbetween [hi] and [lo], exclusive */
+    private long removeBetween(long state, int hi, int lo) {
+        if (hi - lo <= 1) return state;
+        lo++;
+        final int rsh = (hi - lo) * 3;
+        final long mask = onesMask(lo * 3);
+        return ((state >> rsh) & ~mask) | (state & mask);
+    }
+
+
+    private long removeBall(long state, int k) {
+        final long mask = onesMask(k * 3);
+        return ((state >> 3) & ~mask) | (state & mask);
+    }
+
+
+    private long insertHole(long state, int k) {
+        final long mask = onesMask(k * 3);
+        return ((state & ~mask) << 3) | (state & mask);
     }
 
 
@@ -148,38 +182,6 @@ class Solution {
         }
         return result;
     }
-
-
-    /** Return a 64-bit with n 1's on the least significant side. */
-    private long trailingOnesMask(int n) {
-        if (n < 1) {
-            return 0L;
-        }
-        return (-1L) >>> (64 - n);
-    }
-
-
-    /** Remove everything inbetween [hi] and [lo], exclusive */
-    private long removeRange(long state, int hi, int lo) {
-        if (hi - lo <= 1) return state;
-        lo++;
-        final int rsh = (hi - lo) * 3;
-        final long mask = trailingOnesMask(lo * 3);
-        return ((state >> rsh) & ~mask) | (state & mask);
-    }
-
-
-    private long removeHelper(long state, int offset) {
-        final long mask = trailingOnesMask(offset * 3);
-        return ((state >> 3) & ~mask) | (state & mask);
-    }
-
-
-    private long insertHelper(long state, int offset) {
-        final long mask = trailingOnesMask(offset * 3);
-        return ((state & ~mask) << 3) | (state & mask);
-    }
-
 
     private int encodeToBin(char c) {
         return switch (c) {
@@ -193,7 +195,6 @@ class Solution {
                 throw new IllegalArgumentException("Invalid color code: " + c);
         };
     }
-
 
     /* Debug */
     private String decode(long board) {
