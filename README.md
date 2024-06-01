@@ -10,6 +10,7 @@
  - [335. Self Crossing](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/lc0335-self-crossing)
    [(Basic)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/basic_solution/Solution.java)
    [(Advanced)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/advanced_solution/Solution.java)
+   [(Updated)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/solution_2/Solution.java)
 
 ### DP
 - [10. Regular Expression Matching](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0010-regex-matching/Solution.java)
