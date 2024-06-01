@@ -14,16 +14,18 @@
  */
 class Solution {
     public boolean isSelfCrossing(int[] dist) {
-        int p = 2;
         // increasing stage
+        int p = 2;
         while (p < dist.length && dist[p] > dist[p - 2]) {
             p++;
         }
-        p++;
+
         // check point
+        p++;
         if (comp(dist, p) && comp(dist, p - 1)) {
             return true;
         }
+        
         // decreasing stage
         while (p < dist.length && dist[p] < dist[p - 2]) {
             p++;
