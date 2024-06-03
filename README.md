@@ -14,9 +14,9 @@
 
 ### DP
 - [5. Longest Palindromic Substring](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/%23_dynamic_programming/lc0005)
-[Manacher's](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/center_expansion/Solution.java)
-[advanced (iteration)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/enhanced_center_expansion/Solution.java)
-[advanced (recursion)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/recursion/Solution.java)
+[(Manacher's)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/center_expansion/Solution.java)
+[(iteration)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/enhanced_center_expansion/Solution.java)
+[(recursion)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0005/recursion/Solution.java)
 - [10. Regular Expression Matching](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0010-regex-matching/Solution.java)
 - [44. Wildcard Matching](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0044-wildcard-matching/Solution.java)
 - [53. Maximum Subarray](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0053/Solution.java)
