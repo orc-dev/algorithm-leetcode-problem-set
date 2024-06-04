@@ -29,6 +29,7 @@
 - [97. Interleaving String](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0097-interleaving-string/Solution.java)
 - [115. Distinct Subsequences](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0115-distint-subsequences/Solution.java)
 - [123. Best Time to Buy and Sell Stock III](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0123-stock-3/Solution.java)
+- [131. Palindrome Partitioning](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0131/Solution.java)
 - [152. Maximum Product Subarray](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0152/Solution.java)
 - [174. Dungeon Game](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0174/Solution.java)
 - [188. Best Time to Buy and Sell Stock IV](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0188-stock-5/Solution.java)

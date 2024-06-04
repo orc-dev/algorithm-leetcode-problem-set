@@ -2,7 +2,7 @@
  * @author: orc-dev
  * @update: Jun.01 2024
  * 
- * @leetcode: 131. 
+ * @leetcode: 131. Palindrome Partitioning
  * @tag: dp, backtracking
  * 
  * @log
