@@ -20,7 +20,7 @@ import java.util.List;
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
-        next(new char[n * 2], 0, 0, 0, ans);
+        dfs(ans, new char[n * 2], 0, 0, 0);
         return ans;
     }
     
@@ -29,25 +29,22 @@ class Solution {
      * chars in a valid parentheis string.
      * 
      * @param buf char array holding state of current valid parenthesis string
-     * @param k pointer to current processing char
      * @param l number of '(' has been added in previous
      * @param r number of ')' has been added in previous
      * @param ans list containning all valid results
      */
-    private void next(char[] buf, int k, int l, int r, List<String> ans) {
-        if (k == buf.length) {
+    private void dfs(List<String> ans, char[] buf, int n, int l, int r) {
+        if (l + r == n + n) {
             ans.add(new String(buf));
             return;
         }
-
-        if (l < (buf.length >> 1)) {
-            buf[k] = '(';
-            next(buf, k + 1, l + 1, r, ans);
+        if (l < n) {
+            buf[l + r] = '(';
+            dfs(ans, buf, n, l + 1, r);
         }
-        
-        if (r < l) {
-            buf[k] = ')';
-            next(buf, k + 1, l, r + 1, ans);
+        if (l > r) {
+            buf[l + r] = ')';
+            dfs(ans, buf, n, l, r + 1);
         }
     }
 }
