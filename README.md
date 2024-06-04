@@ -11,6 +11,7 @@
    [(Basic)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/basic_solution/Solution.java)
    [(Advanced)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/advanced_solution/Solution.java)
    [(Updated)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/lc0335-self-crossing/solution_2/Solution.java)
+ - [132. Palindrome Partitioning 2](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0132-palindrome-partitioning-2/Solution.java)
 
 ### DP
 - [5. Longest Palindromic Substring](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/%23_dynamic_programming/lc0005)
@@ -30,6 +31,7 @@
 - [115. Distinct Subsequences](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0115-distint-subsequences/Solution.java)
 - [123. Best Time to Buy and Sell Stock III](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0123-stock-3/Solution.java)
 - [131. Palindrome Partitioning](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0131/Solution.java)
+- [132. Palindrome Partitioning 2](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0132-palindrome-partitioning-2/Solution.java)
 - [152. Maximum Product Subarray](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0152/Solution.java)
 - [174. Dungeon Game](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0174/Solution.java)
 - [188. Best Time to Buy and Sell Stock IV](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0188-stock-5/Solution.java)
