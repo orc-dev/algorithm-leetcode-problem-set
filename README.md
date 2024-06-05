@@ -67,7 +67,6 @@
 - [84. Largest Rectangle in Histogram](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0084-histogram/Solution.java)
 - [135. Candy](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0135/one_pass/Solution.java)
 [(one-pass)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0135/one_pass/Solution.java)
-
 - [420. Strong Password Checker](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0420-password-checker/Solution.java)
 - [907. Sum of Subarray Minimums](https://github.com/orc-dev/algorithm-leetcode-problem-set/tree/main/regular-problems/lc0907-sum-subarray-mins)
   [(Iteration)](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/regular-problems/lc0907-sum-subarray-mins/solution-iterative/Solution.java)
