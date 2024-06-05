@@ -1,6 +1,6 @@
 /**
  * @author: orc-dev
- * @update: Jan.10 2024
+ * @update: Jan.10 2024 | Jun.04 2024
  * 
  * @leetcode: 44. Wildcard Matching
  * @tag: greedy, backtracking, dp
@@ -16,46 +16,43 @@
  *       - Has better proformance than dp. 
  * 
  * Proformance
- *   - Runtime: (..)
- *   - Memory: (..)
+ *   - Runtime: (2 ms)
+ *   - Memory: O(1)
  */
 class Solution {
-    public boolean isMatch(String str, String ptn) {
-        final char[] s = str.toCharArray();
-        final char[] p = ptn.toCharArray();
-        int j = 0;
-        int i = 0;
-        int pointTo = -1;
-        int starPos = -1;
+    public boolean isMatch(String s, String p) {
+        final char[] text  = s.toCharArray();
+        final char[] regex = p.toCharArray();
 
-        // Prefix of pattern should match the whole given string
-        while (j < s.length) {
-            // Case: encounter asterisk (greedy)
-            if (i < p.length && p[i] == '*') {
-                pointTo = j - 1;
-                starPos = i;
+        int i = 0;    // text pointer
+        int j = 0;    // regex pointer
+        int y = 0;    // index for text pointer jump back
+        int x = 0;    // index for regex pointer jump back
+
+        while (i < text.length) {
+            // case: point match
+            if (j < regex.length && (text[i] == regex[j] || regex[j] == '?')) {
                 i++;
-            }
-            // Case: chars match
-            else if (i < p.length && (p[i] == p[i] || p[i] == '?')) {
                 j++;
-                i++;
             }
-            // Case: back to last asterisk and advance its 'pointer' (backtracking)
-            else if (starPos >= 0) {
-                pointTo++;
-                j = pointTo;
-                i = starPos + 1;
+            // case: wild char '*'
+            else if (j < regex.length && regex[j] == '*') {
+                y = i;
+                x = j + 1;
+                j++;
             }
-            else 
-                return false;
+            // case: jump back to adjust scope of the last '*'
+            else if (x > 0) {
+                i = y;
+                j = x;
+                y++;
+            }
+            else return false;
         }
-        // Suffix of pattern should only contain '*'
-        while (i < p.length) {
-            if (p[i] != '*')
-                return false;
-            i++;
+        
+        while (j < regex.length && regex[j] == '*') {
+            j++;
         }
-        return true;
+        return j == regex.length;
     }
 }
