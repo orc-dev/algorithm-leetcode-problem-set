@@ -20,7 +20,7 @@ import java.util.Arrays;
  * 
  * dp.recursion
  *   - dp.* >= 1
- *   - dp.* + dn.* >= min(dp.B, dp.R)
+ *   - dp.* + dungeon.* >= min(dp.B, dp.R)
  * 
  * Performance
  *   - Runtime: O(m * n), (2 ms)
