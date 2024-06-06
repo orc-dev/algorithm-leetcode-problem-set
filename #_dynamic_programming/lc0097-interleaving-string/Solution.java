@@ -1,69 +1,47 @@
 /**
  * @author: orc-dev
- * @update: Jan.11 2024
+ * @update: Jan.11 2024 | Jun.06 2024
  * 
  * @leetcode: 97. Interleaving String
  * @tag: dp (mealy)
  * 
- * dp.recursion
- *   - if [TOP] is true, check foo:zip match
- *   - if [LSH] is true, check bar:zip match
+ *         e  x  a  m  p  l  e
+ *     [T][ ][ ][ ][ ][ ][ ][ ]
+ *   c [ ][ ][ ][ ][ ][ ][ ][ ]
+ *   a [ ][ ][ ][ ][ ][ ][ ][ ]
+ *   t [ ][ ][ ][ ][ ][ ][ ][?]
  * 
  * Performance
- *   - Runtime: (..)
- *   - Memory: (..) 
- *   * Follow up requirement achieves: use O(s2.length) extra memory.
+ *   - Runtime: O(m * n) (0 ms, 2D dp table recursion)
+ *   - Memory: O(m * n)
  */
 class Solution {
+    private char[] M, N, T;
+    private Boolean[][] dp;
 
-    /**
-     * dp.tabular
-     *               1  2  3  4  5  6  <- dp.dimension.j (stable)
-     *               -  0  1  2  3  4  <- bar.index
-     *               "  a  a  b  c  c  <- bar.chars  
-     *           [F][T][F][F][F][F][F] <- dp.init.[bar.length + 2]
-     *   0  -  " [F][ ][ ][ ][ ][ ][ ]
-     *   1  0  d [F][ ][ ][ ][ ][ ][ ]
-     *   2  1  b [F][ ][ ][ ][ ][ ][ ]
-     *   3  2  b [F][ ][ ][ ][ ][ ][ ]
-     *   4  3  c [F][ ][ ][ ][ ][ ][ ]
-     *   5  4  a [F][ ][ ][ ][ ][ ][*] <- dp.return
-     *   |  |  |
-     *   |  |  +-- foo.chars
-     *   |  +-- foo.index
-     *   +-- dp.dimension.i (transient)
-     */
     public boolean isInterleave(String s1, String s2, String s3) {
-        final char[] foo = s1.toCharArray();
-        final char[] bar = s2.toCharArray();
-        final char[] zip = s3.toCharArray();
-        // Precheck length
-        if (foo.length + bar.length != zip.length) {
+        M = s1.toCharArray();
+        N = s2.toCharArray();
+        T = s3.toCharArray();
+        final int m = M.length;
+        final int n = N.length;
+        // lengths match check
+        if (m + n != T.length) {
             return false;
         }
-        // dp.init
-        final boolean[] dp = new boolean[bar.length + 2];
-        dp[1] = true;
-
-        // dp.iteration
-        for (int i = 0; i <= foo.length; ++i) {
-            for (int j = 1; j < dp.length; ++j) {
-                final int k = i + j - 2;
-                // dp.recursion
-                dp[j] = dp[j]     && match(foo, i - 1, zip, k) ||
-                        dp[j - 1] && match(bar, j - 2, zip, k);
-            }
-        }
-        return dp[dp.length - 1];
+        dp = new Boolean[m + 1][n + 1];
+        dp[0][0] = true;
+        return dp(m, n);
     }
 
-    /** Returns true if two chars are both empty or equal. */
-    private boolean match(char[] child, int c, char[] parent, int p) {
-        // Two empty strings match
-        if (c < 0 && p < 0) {
-            return true;
+    /** Returns if s3[0:i+j] can be formed by s1[0:i] and s2[0:j] */
+    private boolean dp(int i, int j) {
+        if (dp[i][j] != null) {
+            return dp[i][j];
         }
-        // Two non-empty chars match
-        return (c >= 0) && (p >= 0) && (child[c] == parent[p]);
+        // compare chars first, then shortcut subsequent dp calls
+        return dp[i][j] = 
+            (i > 0) && (M[i - 1] == T[i + j - 1]) && dp(i - 1, j) || 
+            (j > 0) && (N[j - 1] == T[i + j - 1]) && dp(i, j - 1);
     }
 }
