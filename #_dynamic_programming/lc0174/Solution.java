@@ -27,9 +27,9 @@ import java.util.Arrays;
  *   - Memory: O(n)
  */
 class Solution {
-    public int calculateMinimumHP(int[][] dn) {
-        final int nrow = dn.length;
-        final int ncol = dn[0].length;
+    public int calculateMinimumHP(int[][] dungeon) {
+        final int nrow = dungeon.length;
+        final int ncol = dungeon[0].length;
         
         final int[] dp = new int[ncol + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
@@ -39,7 +39,7 @@ class Solution {
             for (int c = ncol - 1; c >= 0; --c) {
                 dp[c] = Math.max(
                     1, 
-                    Math.min(dp[c], dp[c + 1]) - dn[r][c]);
+                    Math.min(dp[c], dp[c + 1]) - dungeon[r][c]);
             }
         }
         return dp[0];
