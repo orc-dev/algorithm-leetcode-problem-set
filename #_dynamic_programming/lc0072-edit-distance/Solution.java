@@ -1,6 +1,6 @@
 /**
  * @author: orc-dev
- * @update: Jan.10 2024
+ * @update: Jan.10 2024 | Jun.05 2024
  * 
  * @leetcode: 72.Edit Distance
  * @tag: #[dynamic programming]
@@ -30,15 +30,15 @@ class Solution {
             dp[i] = i;
         }
         // dp.iteration
-        for (int r = 0; r < n; ++r) {
-            int TL = r;
-            dp[0] = r + 1;
-            for (int c = 1; c <= m; ++c) {
-                // swap
-                dp[c] = TL | (TL = dp[c]) & 0;
-                // compare
-                if (s[c - 1] != t[r]) {
-                    dp[c] = 1 + min(dp[c - 1], dp[c], TL);
+        for (int i = 1; i <= n; ++i) {
+            int topLeft = i - 1;
+            dp[0] = i;
+            for (int j = 1; j <= m; ++j) {
+                // swap topLeft and dp[j]
+                dp[j] = topLeft | (topLeft = dp[j]) & 0;
+                // update dp[j]
+                if (s[j - 1] != t[i]) {
+                    dp[j] = 1 + min(topLeft, dp[j - 1], dp[j]);
                 }
             }
         }
