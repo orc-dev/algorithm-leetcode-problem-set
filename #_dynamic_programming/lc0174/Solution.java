@@ -1,12 +1,12 @@
+import java.util.Arrays;
 /**
  * @author: orc-dev
- * @update: Jan.13 2024
+ * @update: Jan.13 2024 | Jun.05 2024
  * 
  * @leetcode: 174. Dungeon Game
  * @tag: dp (mealy)
  * 
  * dp.tabular
- * 
  *        0  1  2  3  <- dp.col.index
  *     0 [*][R][ ][M] 
  *     1 [B][ ][ ][M] 
@@ -23,28 +23,25 @@
  *   - dp.* + dn.* >= min(dp.B, dp.R)
  * 
  * Performance
- *   - Runtime: (..)
- *   - Memory: (..)
+ *   - Runtime: O(m * n), (2 ms)
+ *   - Memory: O(n)
  */
 class Solution {
     public int calculateMinimumHP(int[][] dn) {
         final int nrow = dn.length;
         final int ncol = dn[0].length;
-        // dp.init
-        final int[] minEntryHP = new int[ncol + 1];
-        java.util.Arrays.fill(minEntryHP, Integer.MAX_VALUE);
-        minEntryHP[ncol - 1] = 1;
+        
+        final int[] dp = new int[ncol + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[ncol - 1] = 1;
 
-        // dp.iteration
         for (int r = nrow - 1; r >= 0; --r) {
             for (int c = ncol - 1; c >= 0; --c) {
-                // dp.recursion
-                minEntryHP[c] = Math.max(
+                dp[c] = Math.max(
                     1, 
-                    Math.min(minEntryHP[c], minEntryHP[c + 1]) - dn[r][c]
-                );
+                    Math.min(dp[c], dp[c + 1]) - dn[r][c]);
             }
         }
-        return minEntryHP[0];
+        return dp[0];
     }
 }
