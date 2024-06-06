@@ -17,6 +17,10 @@
  *     - iteration approach
  *     - space saving: 1D array
  *     - swap topleft and current [!]
+ * 
+ * Performance
+ *   - Runtime: (3 ms), O(n * m)
+ *   - Memory: O(n)
  */
 class Solution {
     public int minDistance(String word1, String word2) {
