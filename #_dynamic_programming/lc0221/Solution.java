@@ -1,50 +1,45 @@
 /**
  * @author: orc-dev
- * @update: Jan.15 2024
+ * @update: Jan.15 2024 | Jun.17 2024
  * 
  * @leetcode: 221. Maximal Square
  * @tag: dp (mealy, pass-local)
  * 
  * @dp.tabular
- *        0  1  2  3  <- dp.col.index
- *           0  1  2  <- data.col.index
- *       [0][0][0][0] <- dp.init
- *     0 [0][ ][ ][ ]
- *     1 [0][ ][z][y]
- *     2 [0][ ][x][*]
- *     |
- *     |-- dp.row.index
+ *     [z][y]
+ *     [x][*]
  * 
- * @dp.recursion
- *   dp.* = 0                          if matrix[*] = '0'
- *   dp.* = 1 + min(dp.x, dp.y, dp.z)  else
+ *   dp.* = 0                 if matrix[*] = '0'
+ *   dp.* = 1 + min(x, y, z)  else
+ * 
+ * @log
+ *   - insert padding column at the end
+ * 
+ * Performance
+ *   - Runtime: O(m * n) (8 ms)
+ *   - Memory: O(n)
  */
 class Solution {
-
     public int maximalSquare(char[][] matrix) {
-        final int nrow = matrix.length;
-        final int ncol = matrix[0].length;
-        // dp.init
+        final int m = matrix.length;
+        final int n = matrix[0].length;
+        final int[] dp = new int[n + 1];
+
         int max = 0;
-        final int[] dp = new int[ncol + 1];
-        // dp.iteration
-        for (int r = 0; r < nrow; ++r) {
-            int temp = 0;
-            for (int c = 1; c < dp.length; ++c) {
+        for (int i = 0; i < m; ++i) {
+            dp[n] = 0;
+            for (int j = n - 1; j >= 0; --j) {
+                if (matrix[i][j] == '0') {
+                    dp[j] = 0;
+                    continue;
+                }
                 // swap
-                temp = dp[c] | (dp[c] = temp) & 0;
+                dp[j] = dp[n] | (dp[n] = dp[j]) & 0;
                 // dp.recursion
-                dp[c] = (matrix[r][c - 1] == '0') ? 0
-                      : 1 + min(dp[c - 1], dp[c], temp);
-                // dp.update.gloabl.max
-                max = Math.max(max, dp[c]);
+                dp[j] = 1 + Math.min(dp[n], Math.min(dp[j], dp[j + 1]));
+                max = Math.max(max, dp[j]);
             }
         }
         return max * max;
-    }
-
-    /** Returns the min of three integers. */
-    private int min(int a, int b, int c) {
-        return Math.min(a, Math.min(b, c));
     }
 }
