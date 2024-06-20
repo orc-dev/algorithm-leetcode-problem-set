@@ -1,35 +1,35 @@
 /**
  * @author: orc-dev
- * @update: Jan.11 2024
+ * @update: Jan.11 2024 | Jun.19 2024
  * 
  * @leetcode: 84.Largest Rectangle in Histogram
  * @tag: monotonic stack
  * 
  * Performance
- *   - Runtime: (..)
- *   - Memory: (..)
+ *   - Runtime: O(n) (6 ms)
+ *   - Memory: O(n)
  */
 class Solution {
-    public int largestRectangleArea(int[] ht) {
-        // Init a monotonic stack
-        final int[] stack = new int[ht.length + 1];
+    public int largestRectangleArea(int[] bar) {
+        // Create and initialize monotonic stack
+        final int n = bar.length;
+        final int[] stack = new int[n + 1];
         stack[0] = -1;
         int p = 0;
-        int area = 0;
 
-        for (int i = 0; i <= ht.length; ++i) {
-            // Pop
-            while ((p > 0) && (i == ht.length || ht[i] < ht[stack[p]])) {
+        int max = 0;
+        for (int i = 0; i <= n; ++i) {
+            // pop while computing the area
+            while (p > 0 && (i == n || bar[i] < bar[stack[p]])) {
+                final int h = bar[stack[p]];
+                final int b = i - stack[p - 1] - 1;
+                max = Math.max(max, h * b);
                 p--;
-                // Calcuate and update max area
-                final int h = ht[stack[p + 1]];
-                final int b = i - stack[p] - 1;
-                area = Math.max(area, b * h);
             }
-            // Push
+            // push
             p++;
             stack[p] = i;
         }
-        return area;
+        return max;
     }
 }
