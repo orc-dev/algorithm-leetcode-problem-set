@@ -29,6 +29,7 @@
 - [72. Edit Distance](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0072-edit-distance/Solution.java)
 - [87. Scramble String](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0087-scramble-string/Solution.java)
 - [91. Decode Ways](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0091/Solution.java)
+- [95. Unique Binary Search Trees II](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0095/Solution.java)
 - [97. Interleaving String](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0097-interleaving-string/Solution.java)
 - [115. Distinct Subsequences](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0115-distint-subsequences/Solution.java)
 - [123. Best Time to Buy and Sell Stock III](https://github.com/orc-dev/algorithm-leetcode-problem-set/blob/main/%23_dynamic_programming/lc0123-stock-3/Solution.java)
