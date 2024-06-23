@@ -13,10 +13,12 @@ import java.util.List;
  *       * use 4-bit to represent a number
  *       * a 8-node tree can be represent with a 32-bit integer
  *       * easy to build larger tree from shorter "branches"
- *   - [!] Use logic shift `>>>` for inserting the tree
+ *   - [!] Use logic shift `>>>` for bit manipulation
+ *   - [U] Reimplement an O(n) method to deserialize the BST to replace
+ *     the original one-by-one insertion method O(n^2).
  * 
  * Performance
- *   - Runtime: O(Catalan.n) (1 ms)
+ *   - Runtime: O(Catalan.n) (0 ms)
  *   - Memory: O(Catalan.sum)
  */
 class Solution {
@@ -55,32 +57,35 @@ class Solution {
         // Build BST's from encoded numbers
         final List<TreeNode> res = new ArrayList<>();
         for (int code : dp[n]) {
-            res.add(buildBST(code));
+            res.add(rebuildBST(code));
         }
         return res;
     }
 
-    /** Build a BST from given tree-seq-num `code` */
-    private TreeNode buildBST(int code) {
-        TreeNode root = null;
-        while (code != 0) {
-            root = insert(root, code & 0xf);
-            code >>>= 4;
+    /**
+     * An O(n) method to deserialize a binary search tree (BST). The least 
+     * significant bit-group (LSB-group) represents the root. The immediate 
+     * next bit-group that is less than the root value is the root of the 
+     * left subtree. The first encountered bit-group that is greater than 
+     * the root value is the root of the right subtree.
+     * 
+     * @param code a sequence number representing a BST
+     * @return a BST instance rebuilt from the code
+     */
+    private TreeNode rebuildBST(int code) {
+        if (code == 0) {
+            return null;
         }
-        return root;
-    }
-
-    /** Insertion helper in building a BST */
-    private TreeNode insert(TreeNode node, int val) {
-        if (node == null)
-            return new TreeNode(val);
-        
-        if (val < node.val) {
-            node.left = insert(node.left, val);
-        } else {
-            node.right = insert(node.right, val);
+        final int val = code & 0xf;
+        int seqR = (code >>> 4);
+        int seqL = seqR;
+        int mask = 0;
+        while (seqR != 0 && ((seqR & 0xf) < val)) {
+            seqR >>>= 4;
+            mask = (mask << 4) | 0xf;
         }
-        return node;
+        return new TreeNode(val, 
+            rebuildBST(seqL & mask), rebuildBST(seqR));
     }
 
     /** Linear implementation of computing the Catalan numbers */
