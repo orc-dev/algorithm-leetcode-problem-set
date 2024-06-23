@@ -1,6 +1,6 @@
 /**
  * @author: orc-dev
- * @update: Jan.19 2024
+ * @update: Jan.19 2024 | Jun.23 2024
  * 
  * @leetcode: 105. Construct Binary Tree from Preorder and Inorder
  * @tag: d&c
@@ -25,13 +25,13 @@ class Solution {
         return build(Integer.MAX_VALUE);
     }
 
-    private TreeNode build(int callBack) {
-        if (i == inorder.length || inorder[i] == callBack) {
+    private TreeNode build(int nullNodeFlag) {
+        if (i == inorder.length || inorder[i] == nullNodeFlag) {
             i++;
             return null;
         }
         final int val = preorder[p++];
-        return new TreeNode(val, build(val), build(callBack));
+        return new TreeNode(val, build(val), build(nullNodeFlag));
     }
 }
 
